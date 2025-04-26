@@ -1,0 +1,21 @@
+<div class="login-container">
+  <div class="login-card">
+    <img src="../../../assets/icon-baby.png" alt="icon of baby" width="60">
+    <h2>Entrar</h2>
+    <form [formGroup]="form" (ngSubmit)="onLogin()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Senha</mat-label>
+        <input matInput formControlName="password" type="password" />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="login-btn" type="submit">
+        Login
+      </button>
+    </form>
+  </div>
+</div>
