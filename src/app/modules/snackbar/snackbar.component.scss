@@ -1,0 +1,33 @@
+.snackbar-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 14px;
+
+  &.success {
+    background-color: #e0f7fa;
+    color: #006064;
+  }
+
+  &.error {
+    background-color: #ffebee;
+    color: #c62828;
+  }
+
+  &.info {
+    background-color: #e3f2fd;
+    color: #1565c0;
+  }
+
+  &.warning {
+    background-color: #fff3e0;
+    color: #ef6c00;
+  }
+
+  .icon {
+    font-size: 24px;
+  }
+}

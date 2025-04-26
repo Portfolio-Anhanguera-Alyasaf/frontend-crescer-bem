@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { Router } from '@angular/router';
 import { AuthRequestDto } from '../../models/requests/auth.request.dto';
 import { AuthResponseDto } from '../../models/responses/auth.response.dto';
 import { AuthService } from '../../services/auth.service';
@@ -14,11 +15,11 @@ import { AuthService } from '../../services/auth.service';
   imports: [FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  providers: [AuthService],
 })
 export class LoginComponent implements OnInit {
   formBuilder: FormBuilder = inject(FormBuilder);
   authService: AuthService = inject(AuthService);
+  router: Router = inject(Router);
   form!: FormGroup;
 
   ngOnInit(): void {
@@ -38,14 +39,20 @@ export class LoginComponent implements OnInit {
       password: this.form.get('password')?.value,
     };
 
-    console.log(credentials);
-    this.authService.login(credentials).subscribe({
-      next: (value: AuthResponseDto) => {
-        console.log(value)
-        localStorage.setItem('token', value.token);
-        localStorage.setItem('refreshToken', value.refreshToken);
+    this.authService.login(credentials).then(
+      (value: AuthResponseDto) => {
+        if (value) {
+          localStorage.setItem('token', value.token);
+          localStorage.setItem('refreshToken', value.refreshToken);
+          localStorage.setItem('expirationToken', value.expirationToken);
+
+          this.router.navigate(['/panel']);
+        }
       },
-      error: () => console.error(),
-    });
+    ).catch((err) => console.error(err));
+  }
+
+  navigateToRegister(): void {
+    this.router.navigate(['/register']);
   }
 }

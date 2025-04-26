@@ -1,0 +1,46 @@
+<div class="login-page">
+  <div class="login-card">
+    <img src="assets/icon-baby.png" alt="Ícone de bebê" class="login-icon" />
+
+    <h1 class="login-title">Bem-vindo!</h1>
+    <p class="login-subtitle">Acompanhe a saúde dos seus filhos com facilidade.</p>
+
+    <form [formGroup]="form" (ngSubmit)="onRegister()" class="login-form">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Senha</mat-label>
+        <input matInput formControlName="password" type="password" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="name" type="text" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Número de filhos</mat-label>
+        <input matInput formControlName="childrenNumber" type="number" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Mãe/Pai</mat-label>
+        <mat-select formControlName="kind">
+          <mat-option [value]="mom">
+            Mãe
+          </mat-option>
+          <mat-option [value]="dad">
+            Pai
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="login-btn" type="submit">
+        Registrar
+      </button>
+    </form>
+  </div>
+</div>

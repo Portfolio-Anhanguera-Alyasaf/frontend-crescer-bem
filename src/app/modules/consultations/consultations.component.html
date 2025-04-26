@@ -1,0 +1,60 @@
+<div class="children-list-container">
+  <div class="header-actions">
+    <h2>Consultas</h2>
+    <button mat-raised-button color="primary" (click)="openRegisterModal()">
+      <mat-icon>add</mat-icon> Registrar Consulta
+    </button>
+  </div>
+
+  <mat-card class="table-card">
+    @if (consultations.length > 0) {
+    <table mat-table [dataSource]="consultations" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="doctorName">
+        <th mat-header-cell *matHeaderCellDef>Nome</th>
+        <td mat-cell *matCellDef="let consultation"> {{consultation.doctorName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="hospitalName">
+        <th mat-header-cell *matHeaderCellDef>Nome</th>
+        <td mat-cell *matCellDef="let consultation"> {{consultation.hospitalName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dateConsult">
+        <th mat-header-cell *matHeaderCellDef>Nascimento</th>
+        <td mat-cell *matCellDef="let consultation"> {{consultation.dateConsult | date:'dd/MM/yyyy'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let consultation">
+          <button mat-icon-button color="primary" (click)="editConsultation(consultation)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteConsultation(consultation.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10]" [pageIndex]="page" [pageSize]="pageSize" [length]="totalElements"
+      (page)="loadPage($event)">
+    </mat-paginator>
+    } @else {
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Nenhuma consulta registrado ainda</h1>
+        <p>Registre a consulta do seu filho no botão acima ou abaixo!</p>
+      </div>
+      <button mat-raised-button color="primary" (click)="openRegisterModal()">
+        <mat-icon>add</mat-icon> Registrar Consulta
+      </button>
+    </section>
+    }
+
+  </mat-card>
+</div>

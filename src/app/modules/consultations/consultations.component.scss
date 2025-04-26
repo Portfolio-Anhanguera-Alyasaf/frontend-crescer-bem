@@ -1,0 +1,59 @@
+.children-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+
+  .header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+
+  .table-card {
+    overflow-x: auto;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+
+    table {
+      width: 100%;
+
+      th {
+        font-weight: bold;
+        color: #555;
+      }
+
+      td,
+      th {
+        padding: 12px 8px;
+      }
+
+      tr:hover {
+        background: #f1f7ff;
+      }
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding: 40px 20px;
+      background: linear-gradient(90deg, #e0f7fa 0%, #ffffff 100%);
+      min-height: 30vh;
+      text-align: center;
+    }
+  }
+}

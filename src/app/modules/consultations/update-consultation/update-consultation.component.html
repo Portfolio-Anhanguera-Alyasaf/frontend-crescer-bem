@@ -1,0 +1,31 @@
+<form [formGroup]="form" (ngSubmit)="onUpdate()" class="form-container">
+  <h2>Editar registro da consulta</h2>
+  <div class="form-grid">
+    <mat-form-field appearance="outline">
+      <mat-label>Dr. nome</mat-label>
+      <input matInput formControlName="doctorName" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nome do hospital</mat-label>
+      <input matInput formControlName="hospitalName" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Data da consulta</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dateConsult" required />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+  </div>
+
+  <div class="form-actions">
+    <button mat-raised-button color="primary" type="submit">
+      Editar
+    </button>
+    <button mat-button (click)="onClose()" type="button">
+      Cancelar
+    </button>
+  </div>
+</form>
